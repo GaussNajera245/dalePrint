@@ -1,19 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const ClientQuery = {};
 
-const ClientSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    mail:{
-        type: String,
-        required: true
-    },
-    orders:{
-        type: [ID],
-        required: true
-    }
-});
+const ClientMutation = {
+    createClient: async( _, {name, mail, orders}, {Client}) => {
+        try {
+            const newClient = await new Client({ name, mail, orders });
+            console.log({newClient})
+            return newClient.save();
+        }
+        catch(err) {
+            console.log(`SOMETHING WRONG :( ${err}`)
+            throw err;
+        }
+    } 
+};
 
-module.exports = mongoose.Model('Client', ClientSchema);
+module.exports = { ClientQuery, ClientMutation };

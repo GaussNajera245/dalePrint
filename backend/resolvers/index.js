@@ -1,9 +1,8 @@
-const Album = require('./albums')
-const Client = require('./clients');
-const Photo = require('./photos')
+const { AlbumQuery, AlbumMutation } = require('./albums')
+const { ClientQuery, ClientMutation } = require('./clients');
+const { PhotoQuery, PhotoMutation } = require('./photos')
 
 module.export = {
-    Album,
-    Client,
-    Photo
+    Mutation: {...AlbumMutation, ...ClientMutation, ...PhotoMutation},
+    Query: {...AlbumQuery, ...ClientQuery, ...PhotoQuery}
 }

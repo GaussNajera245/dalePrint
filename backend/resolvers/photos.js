@@ -1,11 +1,20 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const PhotoQuery = {};
 
-const PhotoSchema = new Schema({
-    content: {
-        type: Buffer,
-        required: true
+const PhotoMutation = {
+    uploadPhoto: async (_, {data}, {Photo}) => {
+        try {
+            //will validate 'data' later
+            const newPhoto = await new Photo({
+                content:data
+            });
+            console.log({newPhoto})
+            return newPhoto.save();
+        }
+        catch(err) {
+            console.log(`SOMETHING WRONG :( ${err}`)
+            throw err;
+        }
     }
-});
+};
 
-module.exports = mongoose.Model('Photo', PhotoSchema);
+module.exports = { PhotoQuery, PhotoMutation };

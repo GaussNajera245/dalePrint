@@ -1,7 +1,33 @@
-type Mutation {
-
+type Album {
+    _id: ID!
+    client_Id: ID!
+    client_mail: String!
+    name: String!
+    photos: [ID]!
+    status: String
+    createdAt: String!
+    updatedAt: String!
 }
 
-type Query {
-    
+type Client {
+    _id: ID!
+    name: String!
+    mail: String!
+    album_orders: [ID]!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type Photo {
+    _id: ID!
+    content: String!
+    createdAt: String!
+    updatedAt: String! 
+}
+
+type Mutation {
+    uploadPhoto(data:String): Photo
+    createClient(name:String!, mail:String!, orders:[ID]!): Client
+    createAlbum( client_Id:ID!, client_mail:String!, name:String!, photos:String!, status:String): Album
+    signUpAlbum2Client(albumId:ID!, photoOrder:String, clientMail:String!):
 }

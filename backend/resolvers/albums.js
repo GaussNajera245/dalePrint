@@ -1,4 +1,14 @@
-const AlbumQuery = {};
+const AlbumQuery = {
+    getAllAlbums: async() => {
+        try{
+            
+        }
+        catch(err) {
+            console.log(`SOMETHING WRONG :( ${err}`)
+            throw err;
+        }
+    }
+};
 
 const AlbumMutation = {
     createAlbum: async (_, {client_Id, client_mail, name, photos, status}, {Album}) => {

@@ -1,0 +1,23 @@
+{
+  "name": "dale_print_be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd frontend && npm run start",
+    "server": "cd backend && nodemon index.js",
+    "server:node": "cd backend && node index.js",
+    "install:all": "cd backend && npm i && cd ../frontend && npm i"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.10.8",
+    "multer": "^1.4.2",
+    "path": "^0.12.7"
+  }
+}

@@ -1,7 +1,8 @@
 const AlbumQuery = {
-    getAllAlbums: async() => {
+    getAllAlbums: async(_, {nothing}, {Album}) => {
         try{
-            
+            const pooh = await Album.find({});
+            return pooh
         }
         catch(err) {
             console.log(`SOMETHING WRONG :( ${err}`)
@@ -35,8 +36,9 @@ const AlbumMutation = {
             const findClient = await Client.findOne({ mail: clientMail })
             if(findClient){
                 findClient.album_orders = [...findClient.album_orders, albumId]
+                return true
             }else{
-                throw new Error('Client Not found')
+                return false
             }
         }
         catch(err) {

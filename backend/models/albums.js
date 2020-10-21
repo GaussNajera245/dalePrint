@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const AlbumSchema = new Schema({
     client_Id: {
-        type: ID,
+        type: Schema.Types.ObjectId,
+        ref: 'Client',
         required: true
     },
     client_mail:{
@@ -15,10 +16,13 @@ const AlbumSchema = new Schema({
         required: true
     }, 
     photos:{
-        type: [ID],
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Photo'
+        }],
         required: true
     },
     status: String
 });
 
-module.exports = mongoose.Model('Album', AlbumSchema);
+module.exports = mongoose.model('Album', AlbumSchema);

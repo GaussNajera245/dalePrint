@@ -29,5 +29,9 @@ type Mutation {
     uploadPhoto(data:String): Photo
     createClient(name:String!, mail:String!, orders:[ID]!): Client
     createAlbum( client_Id:ID!, client_mail:String!, name:String!, photos:String!, status:String): Album
-    signUpAlbum2Client(albumId:ID!, photoOrder:String, clientMail:String!):
+    signUpAlbum2Client(albumId:ID!, photoOrder:String, clientMail:String!):Boolean
+}
+
+type Query {
+    getPhotos(value:String):[Photo]
 }

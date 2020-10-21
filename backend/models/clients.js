@@ -11,9 +11,12 @@ const ClientSchema = new Schema({
         required: true
     },
     album_orders:{
-        type: [ID],
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Album'
+        }],
         required: true
     }
 });
 
-module.exports = mongoose.Model('Client', ClientSchema);
+module.exports = mongoose.model('Client', ClientSchema);

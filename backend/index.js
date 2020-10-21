@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const mongoose = require('mongoose');
 const Models = require('./models/index');
 const resolvers = require('./resolvers/index');
 const filePath = path.join(__dirname, 'typeDefs.gql');
@@ -13,9 +14,9 @@ const server = new ApolloServer({
       console.log({req})
       return {...Models};
     }
-  });
+});
   
-  const U = process.env.MONGO_USER,
+  const U = process.env.MONGO_USER;
   const P = process.env.MONGO_PASSWORD;
   const D = process.env.MONGO_DB;
   const URI = `mongodb+srv://${U}:${P}@nodeapi.s48ar.mongodb.net/${D}?retryWrites=true&w=majority`

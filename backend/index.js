@@ -19,7 +19,8 @@ const server = new ApolloServer({
   const U = process.env.MONGO_USER;
   const P = process.env.MONGO_PASSWORD;
   const D = process.env.MONGO_DB;
-  const URI = `mongodb+srv://${U}:${P}@nodeapi.s48ar.mongodb.net/${D}?retryWrites=true&w=majority`
+  const URI = `mongodb+srv://${U}:${P}@nodeapi.s48ar.mongodb.net/${D}?retryWrites=true&w=majority`;
+  const URI2 = 'mongodb+srv://yola_escudero:fcuk77771664@nodeapi.s48ar.mongodb.net/test?retryWrites=true&w=majority';
 
   const config = {
     useNewUrlParser: true, 
@@ -27,7 +28,7 @@ const server = new ApolloServer({
     useUnifiedTopology: true 
   }
 
-  mongoose.connect( URI, {...config} )
+  mongoose.connect( URI2, {...config} )
   .then(() => {
     server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
       console.log(`🚀 Server ready at ${url}`);

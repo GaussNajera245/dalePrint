@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd frontend && npm run start",
-    "server": "cd backend && nodemon index.js",
+    "start": "cd frontend && npm run dev",
+    "server": "nodemon backend",
     "server:node": "cd backend && node index.js",
     "install:all": "cd backend && npm i && cd ../frontend && npm i"
   },

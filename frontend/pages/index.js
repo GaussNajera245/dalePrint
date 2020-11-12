@@ -1,22 +1,34 @@
 import React, {useState, useRef} from 'react';
 import Layout from '../components/layout';
 import { Grid, Paper, Button } from '@material-ui/core';
-
-import Dropzone from 'react-dropzone';
-
-// import send from './send2Axios';
-//KEYYY
+import Dropzone from '../components/dragNdrop/Dropzone';
 
 function Home() {
   const [items, setItems] = useState([]);
-  const [number, setNumber] = useState(1)
+  const [number, setNumber] = useState(1);
+  const [drag, setDrag] = useState(0);
   const files = useRef('');
+
+  const onStart = () => {
+    // const {activeDrags} = setState;
+    setDrag( B => B + 1);
+  };
+
+  const onStop = () => {
+    // const {activeDrags} = setState;
+    setDrag( C => C - 1);
+  };
+
 
   const HI = () => {
       console.log({see: files.current.value});
       send(files.current.value)
         .then(x=>{  console.log({x}) })
         .catch(k=>{ console.log({k}) });
+  };
+
+  const eventLogger = (event, data) => {
+    console.log({event, data});
   };
 
   const handleDrop = (files) => {
@@ -61,36 +73,35 @@ function Home() {
       return <p className="drop-message">Drag and drop some files on me, or click to select.</p>
     }
   }
+
+  // const configDraggable = { axis:"x",
+  //   handle=".handle"
+  //   defaultPosition={{x: 0, y: 0}}
+  //   position={null}
+  //   grid={[25, 25]}
+  //   scale={1}
+  //   onDrag={handleDrag}
+  // }
  
   return (
     <div className="App">
       <Layout>
         <Grid container  style={{paddingTop:10}}>
           <Grid item xs={8}>
-            <Paper style={{height:'80vh', margin:10}} >
-              <Dropzone onDrop={handleDrop}>
-                {({getRootProps, getInputProps}) => (
-                  <section style={{textAlign: 'center',fontSize: 19,paddingTop: 15}}>
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <b>Drag 'n' drop some files here, or click to select files</b>
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-              <Grid container  style={{paddingTop:10}}>
-                {items}
-              </Grid>
+            <Paper style={{height:'80vh', margin:10, padding:12}} >
+              <Dropzone />
             </Paper>
           </Grid>
+
+
           <Grid item xs={4} style={{marginTop:14}}>
             <Paper style={{height:'80vh', padding:14}}>
               <Grid container  style={{paddingTop:10}}>
-                { values.map((K,i) => <Grid key={i} item xs={12}> {K}</Grid> )}
+                { values.map( K => <Grid key={Math.random()} item xs={12}> {K}</Grid> )}
               </Grid>
 
               <Grid container  style={{paddingTop:10, textAlign:'center'}}>
-                <Button variant="contained" size="large"  style={{maxWidth: '250px', minWidth: '250px',margin:'auto' }} color="" disableElevation>
+                <Button variant="contained" size="large"  style={{maxWidth: '250px', minWidth: '250px',margin:'auto' }} disableElevation>
                   Enviar
                 </Button>,
               </Grid>
